@@ -24,12 +24,11 @@
  THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
  ********************************************************/
+/* $XFree86: xc/lib/xkbfile/xkmout.c,v 1.5 2001/07/25 15:04:58 dawes Exp $ */
 
 #include <stdio.h>
 #include <ctype.h>
-#ifndef X_NOT_STDC_ENV
 #include <stdlib.h>
-#endif
 #include <X11/Xfuncs.h>
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -666,7 +665,7 @@ unsigned		tmp,size= 0;
     for (i=xkb->min_key_code;i<=(int)xkb->max_key_code;i++)  {
 	char *typeName[XkbNumKbdGroups];
 	wireMap.width= XkbKeyGroupsWidth(xkb,i);
-	wireMap.num_groups= XkbKeyNumGroups(xkb,i);
+	wireMap.num_groups= XkbKeyGroupInfo(xkb,i);
 	if (xkb->map && xkb->map->modmap)
 	     wireMap.modifier_map= xkb->map->modmap[i];
 	else wireMap.modifier_map= 0;
@@ -705,7 +704,7 @@ unsigned		tmp,size= 0;
 		    size+= xkmPutCountedString(file,typeName[g]);
 	    }
 	}
-	if (wireMap.num_groups>0) {
+	if (XkbNumGroups(wireMap.num_groups)>0) {
 	    KeySym	*sym;
 	    sym= XkbKeySymsPtr(xkb,i);
 	    for (n=XkbKeyNumSyms(xkb,i);n>0;n--,sym++) {
