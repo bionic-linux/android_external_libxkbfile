@@ -27,7 +27,7 @@
  THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
  ********************************************************/
-/* $XFree86$ */
+/* $XFree86: xc/lib/xkbfile/XKBfileInt.h,v 3.4 2003/11/17 22:20:23 dawes Exp $ */
 
 #include "XKBfile.h"
 
