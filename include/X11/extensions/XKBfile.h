@@ -1,4 +1,4 @@
-/* $XFree86: xc/lib/xkbfile/XKBfile.h,v 3.7 2003/11/17 22:20:23 dawes Exp $ */
+/* $XFree86$ */
 
 #ifndef _XKBFILE_H_
 #define	_XKBFILE_H_ 1
