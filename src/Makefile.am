@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = libxkbfile.la
 
-libxkbfile_la_SOURCES = \ 
+libxkbfile_la_SOURCES = \
          cout.c \
          maprules.c \
          srvmisc.c \
@@ -16,7 +16,7 @@ libxkbfile_la_SOURCES = \
          xkmout.c \
          xkmread.c
 
-INCLUDES = -I$(top_srcdir)/include/X11/extensions
+INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11/extensions/
 
 
 libxkbfile_la_LIBADD = @DEP_LIBS@
