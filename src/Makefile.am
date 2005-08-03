@@ -19,8 +19,8 @@ libxkbfile_la_SOURCES = \
 INCLUDES = -I$(top_srcdir)/include/ -I$(top_srcdir)/include/X11/extensions/
 
 
-libxkbfile_la_LIBADD = @DEP_LIBS@
-AM_CFLAGS = @DEP_CFLAGS@
+libxkbfile_la_LIBADD = @XKBFILE_LIBS@
+AM_CFLAGS = @XKBFILE_CFLAGS@
 
 libxkbfile_la_LDFLAGS = -version-number 1:0:0 -no-undefined
 

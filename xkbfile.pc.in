@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: xkbfile
 Description: The xkbfile Library
 Version: @PACKAGE_VERSION@
-Cflags: -I${includedir} @DEP_CFLAGS@
-Libs: -L${libdir} -lxkbfile @DEP_LIBS@
+Cflags: -I${includedir} @XKBFILE_CFLAGS@
+Libs: -L${libdir} -lxkbfile @XKBFILE_LIBS@
 
