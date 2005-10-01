@@ -24,5 +24,5 @@ SUBDIRS = src
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xkbfile.pc
 
-EXTRA_DIST = xkbfile.pc.in autogen.sh
+EXTRA_DIST = xkbfile.pc.in autogen.sh magic
 
