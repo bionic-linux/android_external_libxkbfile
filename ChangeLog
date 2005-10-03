@@ -1,3 +1,9 @@
+2005-10-04  Kevin E. Martin  <kem-at-freedesktop-dot-org>
+
+	* Makefile.am:
+	* src/Makefile.am:
+	magic lives in src, so add it to EXTRA_DIST there instead
+
 2005-07-08  Keith Packard  <keithp@keithp.com>
 
 	* .cvsignore:
