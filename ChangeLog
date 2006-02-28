@@ -1,3 +1,9 @@
+2006-02-28  Adam Jackson  <ajax@freedesktop.org>
+
+	* configure.ac:
+	* src/Makefile.am:
+	Bump to 1.0.2.
+
 2006-02-28  Daniel Stone  <daniel@freedesktop.org>
 
 	* src/maprules.c:
