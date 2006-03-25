@@ -68,11 +68,7 @@ extern char *	_XkbDupString(
 	char *	/* old_str */
 );
 
-extern int	_XkbStrCaseCmp(
-	char *	/* str1 */,
-	char *	/* str2 */
-);
-#define _XkbStrCaseEqual(s1,s2)	(_XkbStrCaseCmp(s1,s2)==0)
+#define _XkbStrCaseEqual(s1,s2)	(strcmp(tolower(s1),tolower(s2))==0)
 
 _XFUNCPROTOEND
 

@@ -256,32 +256,32 @@ int	ch;
 static Bool
 AddCtrlByName(XkbConfigRtrnPtr rtrn,char *name,unsigned long *ctrls_rtrn)
 {
-    if ((_XkbStrCaseCmp(name,"repeat")==0)||
-	(_XkbStrCaseCmp(name,"repeatkeys")==0))
+    if ((strcmp(tolower(name),"repeat")==0)||
+	(strcmp(tolower(name),"repeatkeys")==0))
 	*ctrls_rtrn= XkbRepeatKeysMask;
-    else if (_XkbStrCaseCmp(name,"slowkeys")==0)
+    else if (strcmp(tolower(name),"slowkeys")==0)
 	*ctrls_rtrn= XkbSlowKeysMask;
-    else if (_XkbStrCaseCmp(name,"bouncekeys")==0)
+    else if (strcmp(tolower(name),"bouncekeys")==0)
 	*ctrls_rtrn= XkbBounceKeysMask;
-    else if (_XkbStrCaseCmp(name,"stickykeys")==0)
+    else if (strcmp(tolower(name),"stickykeys")==0)
 	*ctrls_rtrn= XkbStickyKeysMask;
-    else if (_XkbStrCaseCmp(name,"mousekeys")==0)
+    else if (strcmp(tolower(name),"mousekeys")==0)
 	*ctrls_rtrn= XkbMouseKeysMask;
-    else if (_XkbStrCaseCmp(name,"mousekeysaccel")==0)
+    else if (strcmp(tolower(name),"mousekeysaccel")==0)
 	*ctrls_rtrn= XkbMouseKeysAccelMask;
-    else if (_XkbStrCaseCmp(name,"accessxkeys")==0)
+    else if (strcmp(tolower(name),"accessxkeys")==0)
 	*ctrls_rtrn= XkbAccessXKeysMask;
-    else if (_XkbStrCaseCmp(name,"accessxtimeout")==0)
+    else if (strcmp(tolower(name),"accessxtimeout")==0)
 	*ctrls_rtrn= XkbAccessXTimeoutMask;
-    else if (_XkbStrCaseCmp(name,"accessxfeedback")==0)
+    else if (strcmp(tolower(name),"accessxfeedback")==0)
 	*ctrls_rtrn= XkbAccessXFeedbackMask;
-    else if (_XkbStrCaseCmp(name,"audiblebell")==0)
+    else if (strcmp(tolower(name),"audiblebell")==0)
 	*ctrls_rtrn= XkbAudibleBellMask;
-    else if (_XkbStrCaseCmp(name,"overlay1")==0)
+    else if (strcmp(tolower(name),"overlay1")==0)
 	*ctrls_rtrn= XkbOverlay1Mask;
-    else if (_XkbStrCaseCmp(name,"overlay2")==0)
+    else if (strcmp(tolower(name),"overlay2")==0)
 	*ctrls_rtrn= XkbOverlay2Mask;
-    else if (_XkbStrCaseCmp(name,"ignoregrouplock")==0)
+    else if (strcmp(tolower(name),"ignoregrouplock")==0)
 	*ctrls_rtrn= XkbIgnoreGroupLockMask;
     else {
 	rtrn->error= XkbCF_ExpectedControl;
@@ -295,29 +295,29 @@ AddAXTimeoutOptByName(	XkbConfigRtrnPtr	rtrn,
 			char *			name,
 			unsigned short *	opts_rtrn)
 {
-    if (_XkbStrCaseCmp(name,"slowkeyspress")==0)
+    if (strcmp(tolower(name),"slowkeyspress")==0)
 	*opts_rtrn= XkbAX_SKPressFBMask;
-    else if (_XkbStrCaseCmp(name,"slowkeysaccept")==0)
+    else if (strcmp(tolower(name),"slowkeysaccept")==0)
 	*opts_rtrn= XkbAX_SKAcceptFBMask;
-    else if (_XkbStrCaseCmp(name,"feature")==0)
+    else if (strcmp(tolower(name),"feature")==0)
 	*opts_rtrn= XkbAX_FeatureFBMask;
-    else if (_XkbStrCaseCmp(name,"slowwarn")==0)
+    else if (strcmp(tolower(name),"slowwarn")==0)
 	*opts_rtrn= XkbAX_SlowWarnFBMask;
-    else if (_XkbStrCaseCmp(name,"indicator")==0)
+    else if (strcmp(tolower(name),"indicator")==0)
 	*opts_rtrn= XkbAX_IndicatorFBMask;
-    else if (_XkbStrCaseCmp(name,"stickykeys")==0)
+    else if (strcmp(tolower(name),"stickykeys")==0)
 	*opts_rtrn= XkbAX_StickyKeysFBMask;
-    else if (_XkbStrCaseCmp(name,"twokeys")==0)
+    else if (strcmp(tolower(name),"twokeys")==0)
 	*opts_rtrn= XkbAX_TwoKeysMask;
-    else if (_XkbStrCaseCmp(name,"latchtolock")==0)
+    else if (strcmp(tolower(name),"latchtolock")==0)
 	*opts_rtrn= XkbAX_LatchToLockMask;
-    else if (_XkbStrCaseCmp(name,"slowkeysrelease")==0)
+    else if (strcmp(tolower(name),"slowkeysrelease")==0)
 	*opts_rtrn= XkbAX_SKReleaseFBMask;
-    else if (_XkbStrCaseCmp(name,"slowkeysreject")==0)
+    else if (strcmp(tolower(name),"slowkeysreject")==0)
 	*opts_rtrn= XkbAX_SKRejectFBMask;
-    else if (_XkbStrCaseCmp(name,"bouncekeysreject")==0)
+    else if (strcmp(tolower(name),"bouncekeysreject")==0)
 	*opts_rtrn= XkbAX_BKRejectFBMask;
-    else if (_XkbStrCaseCmp(name,"dumbbell")==0)
+    else if (strcmp(tolower(name),"dumbbell")==0)
 	*opts_rtrn= XkbAX_DumbBellFBMask;
     else {
 	rtrn->error= XkbCF_ExpectedControl;
@@ -351,22 +351,22 @@ XkbCFAddModByName(	XkbConfigRtrnPtr	rtrn,
 	last->merge= merge;
 	last->name= NULL;
     }
-    if (_XkbStrCaseCmp(name,"shift")==0)
+    if (strcmp(tolower(name),"shift")==0)
 	last->mods|= ShiftMask;
-    else if (_XkbStrCaseCmp(name,"lock")==0)
+    else if (strcmp(tolower(name),"lock")==0)
 	last->mods|= LockMask;
-    else if ((_XkbStrCaseCmp(name,"control")==0)||
-		(_XkbStrCaseCmp(name,"ctrl")==0))
+    else if ((strcmp(tolower(name),"control")==0)||
+		(strcmp(tolower(name),"ctrl")==0))
 	last->mods|= ControlMask;
-    else if (_XkbStrCaseCmp(name,"mod1")==0)
+    else if (strcmp(tolower(name),"mod1")==0)
 	last->mods|= Mod1Mask;
-    else if (_XkbStrCaseCmp(name,"mod2")==0)
+    else if (strcmp(tolower(name),"mod2")==0)
 	last->mods|= Mod2Mask;
-    else if (_XkbStrCaseCmp(name,"mod3")==0)
+    else if (strcmp(tolower(name),"mod3")==0)
 	last->mods|= Mod3Mask;
-    else if (_XkbStrCaseCmp(name,"mod4")==0)
+    else if (strcmp(tolower(name),"mod4")==0)
 	last->mods|= Mod4Mask;
-    else if (_XkbStrCaseCmp(name,"mod5")==0)
+    else if (strcmp(tolower(name),"mod5")==0)
 	last->mods|= Mod5Mask;
     else {
 	if (last->name!=NULL) {
@@ -796,11 +796,11 @@ unsigned		what;
 	    if (tok!=XkbCF_Integer) {
 		Bool ok= False;
 		if ((onoff)&&(tok==XkbCF_Ident)&&(val.str!=NULL)) {
-		    if (_XkbStrCaseCmp(val.str,"on")) {
+		    if (strcmp(tolower(val.str),"on")) {
 			val.ival= onoff;
 			ok= True;
 		    }
-		    else if (_XkbStrCaseCmp(val.str,"off")) {
+		    else if (strcmp(tolower(val.str),"off")) {
 			val.ival= 0;
 			ok= True;
 		    }
@@ -826,10 +826,10 @@ unsigned		what;
 	    }
 	    tok= XkbCFScan(file,&val,rtrn);
 	    if (tok==XkbCF_Ident) {
-		if (_XkbStrCaseCmp(val.str,"wrap")==0) {
+		if (strcmp(tolower(val.str),"wrap")==0) {
 		    rtrn->groups_wrap= XkbSetGroupInfo(0,XkbWrapIntoRange,0);
 		}
-		else if (_XkbStrCaseCmp(val.str,"clamp")==0) {
+		else if (strcmp(tolower(val.str),"clamp")==0) {
 		    rtrn->groups_wrap= XkbSetGroupInfo(0,XkbClampIntoRange,0);
 		}
 		else {
@@ -1280,7 +1280,7 @@ XkbConfigFieldsPtr	tmp;
 		XkbConfigFieldPtr	f;
 
 		for (i=0,f=tmp->fields;(i<tmp->num_fields)&&(!done);i++,f++) {
-		    if (_XkbStrCaseCmp(val.str,f->field)!=0)
+		    if (strcmp(tolower(val.str),f->field)!=0)
 			continue;
 		    if ((*tmp->parser)(file,tmp,f,xkb,rtrn))
 			 done= True;

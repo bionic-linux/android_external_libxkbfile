@@ -1,3 +1,11 @@
+2006-03-25  Daniel Stone  <daniel@freedesktop.org>
+
+	* src/XKBfileInt.h:
+	* src/xkbmisc.c:
+	* src/xkbconfig.c:
+	* src/maprules.c:
+	Bug #3819: Change open-coded _XkbStrCaseCmp to strcmp + tolower.
+
 2006-02-28  Adam Jackson  <ajax@freedesktop.org>
 
 	* configure.ac:
