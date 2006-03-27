@@ -33,6 +33,9 @@ AM_CONFIG_HEADER(config.h)
 AC_PROG_CC
 AC_PROG_LIBTOOL
 
+AC_CHECK_FUNC(strcasecmp, [], AC_DEFINE([NEED_STRCASECMP], 1,
+                                        [Do not have have `strcasecmp'.]))
+
 # Check for dependencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
 

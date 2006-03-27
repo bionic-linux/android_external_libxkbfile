@@ -1108,18 +1108,18 @@ int			len,headingtype,extra_ndx = 0;
 	    tok = strtok(&(line.line[1]), " \t");
 	    if (strcmp(tok,"model") == 0)
 		headingtype = HEAD_MODEL;
-	    else if (strcmp(tolower(tok),"layout") == 0)
+	    else if (_XkbStrCaseCmp(tok,"layout") == 0)
 		headingtype = HEAD_LAYOUT;
-	    else if (strcmp(tolower(tok),"variant") == 0)
+	    else if (_XkbStrCaseCmp(tok,"variant") == 0)
 		headingtype = HEAD_VARIANT;
-	    else if (strcmp(tolower(tok),"option") == 0)
+	    else if (_XkbStrCaseCmp(tok,"option") == 0)
 		headingtype = HEAD_OPTION;
 	    else {
 		int i;
 		headingtype = HEAD_EXTRA;
 		extra_ndx= -1;
 		for (i=0;(i<rules->num_extra)&&(extra_ndx<0);i++) {
-		    if (_XkbStrCaseCmp(tolower(tok),rules->extra_names[i]))
+		    if (_XkbStrCaseCmp(tok,rules->extra_names[i]))
 			extra_ndx= i;
 		}
 		if (extra_ndx<0) {

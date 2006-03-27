@@ -1,3 +1,12 @@
+2006-03-27  Daniel Stone  <daniel@freedesktop.org>
+
+	* configure.ac:
+	* src/XKBfileInt.h:
+	* src/xkbmisc.c:
+	* src/xkbconfig.c:
+	* src/maprules.c:
+	Fix horrendous botching of previous commit.
+
 2006-03-25  Daniel Stone  <daniel@freedesktop.org>
 
 	* src/XKBfileInt.h:
