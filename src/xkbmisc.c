@@ -321,7 +321,7 @@ XkbFileInfo	finfo;
 	if (wantNames&XkmTypesMask) {
 	    if (old_names->types!=None) {
 		tmp= XkbAtomGetString(dpy,old_names->types);
-		names->types= _XkbDupString(tmp);
+		names->types= tmp;
 	    }
 	    else {
 		wantDflts|= XkmTypesMask;
@@ -331,7 +331,7 @@ XkbFileInfo	finfo;
 	if (wantNames&XkmCompatMapMask) {
 	    if (old_names->compat!=None) {
 		tmp= XkbAtomGetString(dpy,old_names->compat);
-		names->compat= _XkbDupString(tmp);
+		names->compat= tmp;
 	    }
 	    else wantDflts|= XkmCompatMapMask;
 	    complete|= XkmCompatMapMask; 
@@ -340,13 +340,13 @@ XkbFileInfo	finfo;
 	    if (old_names->symbols==None)
 		return False;
 	    tmp= XkbAtomGetString(dpy,old_names->symbols);
-	    names->symbols= _XkbDupString(tmp);
+	    names->symbols= tmp;
 	    complete|= XkmSymbolsMask; 
 	}
 	if (wantNames&XkmKeyNamesMask) {
 	   if (old_names->keycodes!=None) {
 		tmp= XkbAtomGetString(dpy,old_names->keycodes);
-		names->keycodes= _XkbDupString(tmp);
+		names->keycodes= tmp;
 	    }
 	    else wantDflts|= XkmKeyNamesMask;
 	    complete|= XkmKeyNamesMask;
@@ -355,7 +355,7 @@ XkbFileInfo	finfo;
 	    if (old_names->geometry==None)
 		return False;
 	    tmp= XkbAtomGetString(dpy,old_names->geometry);
-	    names->geometry= _XkbDupString(tmp);
+	    names->geometry= tmp;
 	    complete|= XkmGeometryMask; 
 	    wantNames&= ~XkmGeometryMask;
 	}

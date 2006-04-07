@@ -6,6 +6,9 @@
 	* src/xkbout.c:
 	Coverity #979, 980, 981, 982: Fix potential NULL dereferences.
 
+	* src/xkbmisc.c:
+	Coverity #787, 788: Fix memory leaks.
+
 2006-03-27  Daniel Stone  <daniel@freedesktop.org>
 
 	* configure.ac:
