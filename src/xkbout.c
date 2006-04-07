@@ -392,10 +392,8 @@ XkbServerMapPtr		srv;
 Bool			showActions;
 
     xkb= result->xkb;
-    map= xkb->map;
-    srv= xkb->server;
-    dpy= xkb->dpy;
-    if ((!xkb)||(!map)||(!map->syms)||(!map->key_sym_map)) {
+
+    if ((!xkb)||(!xkb->map)||(!xkb->map->syms)||(!xkb->map->key_sym_map)) {
 	_XkbLibError(_XkbErrMissingSymbols,"XkbWriteXKBSymbols",0);
 	return False;
     }
@@ -403,6 +401,11 @@ Bool			showActions;
 	_XkbLibError(_XkbErrMissingNames,"XkbWriteXKBSymbols",0);
 	return False;
     }
+
+    map= xkb->map;
+    srv= xkb->server;
+    dpy= xkb->dpy;
+
     if ((xkb->names==NULL)||(xkb->names->symbols==None))
 	 fprintf(file,"xkb_symbols {\n\n");
     else fprintf(file,"xkb_symbols \"%s\" {\n\n",
