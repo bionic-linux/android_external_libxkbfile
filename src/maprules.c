@@ -1353,7 +1353,8 @@ XkbRF_GetNamesProp(Display *dpy,char **rf_rtrn,XkbRF_VarDefsPtr vd_rtrn)
 Atom		rules_atom,actual_type;
 int		fmt;
 unsigned long	nitems,bytes_after;
-char            *data,*out;
+unsigned char   *data;
+char            *out, *end;
 Status		rtrn;
 
     rules_atom= XInternAtom(dpy,_XKB_RF_NAMES_PROP_ATOM,True);
@@ -1374,35 +1375,36 @@ Status		rtrn;
 	return (fmt==0?True:False);
     }
 
-    out= data;
+    out=(char*)data;
+    end=out+nitems;
     if (out && (*out) && rf_rtrn)
 	 *rf_rtrn= _XkbDupString(out);
     out+=strlen(out)+1;
 
-    if ((out-data)<nitems) {
+    if (out<end) {
 	if (*out)
 	    vd_rtrn->model= _XkbDupString(out);
 	out+=strlen(out)+1;
     }
 
-    if ((out-data)<nitems) {
+    if (out<end) {
 	if (*out)
 	    vd_rtrn->layout= _XkbDupString(out);
 	out+=strlen(out)+1;
     }
 
-    if ((out-data)<nitems) {
+    if (out<end) {
 	if (*out)
 	    vd_rtrn->variant= _XkbDupString(out);
 	out+=strlen(out)+1;
     }
 
-
-    if ((out-data)<nitems) {
+    if (out<end) {
 	if (*out)
 	    vd_rtrn->options= _XkbDupString(out);
 	out+=strlen(out)+1;
     }
+
     XFree(data);
     return True;
 }
