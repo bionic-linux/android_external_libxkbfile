@@ -4,7 +4,7 @@
 	Fix signed vs unsigned char hilarity.  (Bill Crawford)
 
 	* src/xkbout.c:
-	Coverity #982: Fix potential NULL dereference.
+	Coverity #979, 980, 981, 982: Fix potential NULL dereferences.
 
 2006-03-27  Daniel Stone  <daniel@freedesktop.org>
 

@@ -135,11 +135,11 @@ Display *		dpy;
 char *			alternate;
 
     xkb= result->xkb;
-    dpy= xkb->dpy;
-    if ((!xkb)||(!xkb->names)||(!xkb->names->keys)) {
+    if ((!xkb)||(!xkb->names)||(!xkb->names->keys)||(!xkb->dpy)) {
 	_XkbLibError(_XkbErrMissingNames,"XkbWriteXKBKeycodes",0);
 	return False;
     }
+    dpy= xkb->dpy;
     kcName= xkb->names->keycodes;
     if (kcName!=None)
 	 fprintf(file,"xkb_keycodes \"%s\" {\n",
@@ -199,11 +199,11 @@ XkbKTMapEntryPtr	entry;
 XkbDescPtr		xkb;
 
     xkb= result->xkb;
-    dpy= xkb->dpy;
-    if ((!xkb)||(!xkb->map)||(!xkb->map->types)) {
+    if ((!xkb)||(!xkb->map)||(!xkb->map->types)||(!xkb->dpy)) {
 	_XkbLibError(_XkbErrMissingTypes,"XkbWriteXKBKeyTypes",0);
 	return False;
     }
+    dpy= xkb->dpy;
     if (xkb->map->num_types<XkbNumRequiredTypes) {
 	_XkbLibError(_XkbErrMissingReqTypes,"XkbWriteXKBKeyTypes",0);
 	return 0;
@@ -311,11 +311,11 @@ XkbSymInterpretPtr	interp;
 XkbDescPtr		xkb;
 
     xkb= result->xkb;
-    dpy= xkb->dpy;
-    if ((!xkb)||(!xkb->compat)||(!xkb->compat->sym_interpret)) {
+    if ((!xkb)||(!xkb->compat)||(!xkb->compat->sym_interpret)||(!xkb->dpy)) {
 	_XkbLibError(_XkbErrMissingCompatMap,"XkbWriteXKBCompatMap",0);
 	return False;
     }
+    dpy= xkb->dpy;
     if ((xkb->names==NULL)||(xkb->names->compat==None))
 	 fprintf(file,"xkb_compatibility {\n\n");
     else fprintf(file,"xkb_compatibility \"%s\" {\n\n",
