@@ -778,7 +778,7 @@ int		dfltKeyColor = 0;
 	fprintf(file,"        angle=  %s;\n",
 					XkbGeomFPText(s->angle,XkbXKBFile));
     }
-    for (i=0,row=s->rows;i<s->num_rows;i++,row++) {
+    for (i=0,row=s->rows;row&&i<s->num_rows;i++,row++) {
 	fprintf(file,"        row {\n");
 	fprintf(file,"            top=  %s;\n",
 					XkbGeomFPText(row->top,XkbXKBFile));

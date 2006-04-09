@@ -3,6 +3,10 @@
 	* src/xkbtext.c:
 	Coverity #776, 777: Fix memory leaks.
 
+	* src/xkbout.c:
+	Coverity #774: Fix memory leak.
+	Coverity #265: Fix potential NULL dereference.
+
 2006-04-07  Daniel Stone  <daniel@freedesktop.org>
 
 	* src/maprules.c:
