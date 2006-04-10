@@ -1,3 +1,9 @@
+2006-04-10  Daniel Stone  <daniel@freedesktop.org>
+
+	* src/xkbtext.c:
+	* src/xkbout.c:
+	Fix stupid typos.  (Shang-Feng Yang)
+
 2006-04-09  Daniel Stone  <daniel@freedesktop.org>
 
 	* src/xkbtext.c:

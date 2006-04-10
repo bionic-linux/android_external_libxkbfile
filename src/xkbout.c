@@ -266,7 +266,7 @@ XkbDescPtr	xkb;
 char *tmp;
 
     xkb= result->xkb;
-    tmp = XkbGetAtomString(xkb->dpy, name);
+    tmp = XkbAtomGetString(xkb->dpy, name);
     fprintf(file,"    indicator \"%s\" {\n",tmp);
     xfree(tmp);
     if (led->flags&XkbIM_NoExplicit)
