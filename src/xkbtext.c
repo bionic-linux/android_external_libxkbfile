@@ -99,7 +99,7 @@ char	*rtrn,*tmp;
 	rtrn= tbGetBuffer(len);
 	strncpy(rtrn,tmp,len);
 	rtrn[len]= '\0';
-        Xfree(tmp);
+        _XkbFree(tmp);
     }
     else {
 	rtrn= tbGetBuffer(1);
@@ -135,7 +135,7 @@ char *rtrn,*tmp;
     else if (vmodNames&&(vmodNames[ndx]!=None))
 	 tmp= XkbAtomGetString(dpy,vmodNames[ndx]);
     if (tmp==NULL) {
-        tmp= Xalloc(20 * sizeof(char));
+        tmp= (char *)_XkbAlloc(20 * sizeof(char));
 	snprintf(tmp,20,"%d",ndx);
     }
 
@@ -149,7 +149,7 @@ char *rtrn,*tmp;
          snprintf(rtrn, len, "vmod_%s", tmp);
     }
     else strncpy(rtrn,tmp,len);
-    Xfree(tmp);
+    _XkbFree(tmp);
     return rtrn;
 }
 

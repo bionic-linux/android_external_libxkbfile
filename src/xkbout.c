@@ -268,7 +268,7 @@ char *tmp;
     xkb= result->xkb;
     tmp = XkbAtomGetString(xkb->dpy, name);
     fprintf(file,"    indicator \"%s\" {\n",tmp);
-    xfree(tmp);
+    _XkbFree(tmp);
     if (led->flags&XkbIM_NoExplicit)
 	fprintf(file,"        !allowExplicit;\n");
     if (led->flags&XkbIM_LEDDrivesKB)
