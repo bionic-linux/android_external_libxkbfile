@@ -1,3 +1,9 @@
+2006-04-12  Daniel Stone  <daniel@freedesktop.org>
+
+	* src/xkbatom.c:
+	* src/xkbout.c:
+	Fix offline operation.
+
 2006-04-10  Daniel Stone  <daniel@freedesktop.org>
 
 	* src/xkbtext.c:

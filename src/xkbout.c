@@ -135,7 +135,7 @@ Display *		dpy;
 char *			alternate;
 
     xkb= result->xkb;
-    if ((!xkb)||(!xkb->names)||(!xkb->names->keys)||(!xkb->dpy)) {
+    if ((!xkb)||(!xkb->names)||(!xkb->names->keys)) {
 	_XkbLibError(_XkbErrMissingNames,"XkbWriteXKBKeycodes",0);
 	return False;
     }
@@ -199,7 +199,7 @@ XkbKTMapEntryPtr	entry;
 XkbDescPtr		xkb;
 
     xkb= result->xkb;
-    if ((!xkb)||(!xkb->map)||(!xkb->map->types)||(!xkb->dpy)) {
+    if ((!xkb)||(!xkb->map)||(!xkb->map->types)) {
 	_XkbLibError(_XkbErrMissingTypes,"XkbWriteXKBKeyTypes",0);
 	return False;
     }
@@ -314,7 +314,7 @@ XkbSymInterpretPtr	interp;
 XkbDescPtr		xkb;
 
     xkb= result->xkb;
-    if ((!xkb)||(!xkb->compat)||(!xkb->compat->sym_interpret)||(!xkb->dpy)) {
+    if ((!xkb)||(!xkb->compat)||(!xkb->compat->sym_interpret)) {
 	_XkbLibError(_XkbErrMissingCompatMap,"XkbWriteXKBCompatMap",0);
 	return False;
     }
