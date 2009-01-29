@@ -27,22 +27,27 @@ AC_INIT(libxkbfile, 1.0.5, [https://bugs.freedesktop.org/enter_bug.cgi?product=x
 AM_INIT_AUTOMAKE([dist-bzip2])
 AM_MAINTAINER_MODE
 
+# Require xorg-macros: XORG_CWARNFLAGS, XORG_CHANGELOG
+m4_ifndef([XORG_MACROS_VERSION], [AC_FATAL([must install xorg-macros 1.2 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.2)
 AM_CONFIG_HEADER(config.h)
 
 # Check for progs
 AC_PROG_CC
 AC_PROG_LIBTOOL
+XORG_CWARNFLAGS
 
 AC_CHECK_FUNC(strcasecmp, [], AC_DEFINE([NEED_STRCASECMP], 1,
                                         [Do not have `strcasecmp'.]))
 
 # Check for dependencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
-
+XKBFILE_CFLAGS="$CWARNFLAGS $XKBFILE_CFLAGS"
 AC_SUBST(XKBFILE_CFLAGS)
 AC_SUBST(XKBFILE_LIBS)
 		  
 XORG_RELEASE_VERSION
+XORG_CHANGELOG
 
 AC_OUTPUT([Makefile
 	   src/Makefile

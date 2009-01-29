@@ -1208,7 +1208,7 @@ xkmSectionInfo	tmpTOC;
 char 		name[100];
 
     if ((!file)||(!toc))
-	return 0;
+	return NULL;
     switch (toc->type) {
 	case XkmVirtualModsIndex:
 	case XkmIndicatorsIndex:
@@ -1223,7 +1223,7 @@ char 		name[100];
 	    if ((tmpTOC.type!=toc->type)||(tmpTOC.format!=toc->format)||
 		(tmpTOC.size!=toc->size)||(tmpTOC.offset!=toc->offset)) {
 		_XkbLibError(_XkbErrIllegalContents,"XkmReadFileSectionName",0);
-		return 0;
+		return NULL;
 	    }
 	    if (XkmGetCountedString(file,name,100)>0)
 		return _XkbDupString(name);
