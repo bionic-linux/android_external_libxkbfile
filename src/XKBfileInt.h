@@ -30,6 +30,7 @@
 /* $XFree86$ */
 
 #include "XKBfile.h"
+#include <string.h>
 
 #ifdef DEBUG
 #define	_XkbLibError(c,l,d) \
@@ -63,10 +64,6 @@
 #endif
 
 _XFUNCPROTOBEGIN
-
-extern char *	_XkbDupString(
-	char *	/* old_str */
-);
 
 #define _XkbStrCaseEqual(s1,s2)	(_XkbStrCaseCmp(s1,s2)==0)
 

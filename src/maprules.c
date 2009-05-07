@@ -439,8 +439,8 @@ Bool 		append = False;
             }
             if (*words == '\0')
                 return False;
-            group->name = _XkbDupString(gname);
-            group->words = _XkbDupString(words);
+            group->name = strdup(gname);
+            group->words = strdup(words);
             for (i = 1, words = group->words; *words; words++) {
                  if ( *words == ' ') {
                      *words++ = '\0';
@@ -491,17 +491,17 @@ Bool 		append = False;
 	 rule->flags|= XkbRF_Append;
     else
 	 rule->flags|= XkbRF_Normal;
-    rule->model= _XkbDupString(tmp.name[MODEL]);
-    rule->layout= _XkbDupString(tmp.name[LAYOUT]);
-    rule->variant= _XkbDupString(tmp.name[VARIANT]);
-    rule->option= _XkbDupString(tmp.name[OPTION]);
+    rule->model= strdup(tmp.name[MODEL]);
+    rule->layout= strdup(tmp.name[LAYOUT]);
+    rule->variant= strdup(tmp.name[VARIANT]);
+    rule->option= strdup(tmp.name[OPTION]);
 
-    rule->keycodes= _XkbDupString(tmp.name[KEYCODES]);
-    rule->symbols= _XkbDupString(tmp.name[SYMBOLS]);
-    rule->types= _XkbDupString(tmp.name[TYPES]);
-    rule->compat= _XkbDupString(tmp.name[COMPAT]);
-    rule->geometry= _XkbDupString(tmp.name[GEOMETRY]);
-    rule->keymap= _XkbDupString(tmp.name[KEYMAP]);
+    rule->keycodes= strdup(tmp.name[KEYCODES]);
+    rule->symbols= strdup(tmp.name[SYMBOLS]);
+    rule->types= strdup(tmp.name[TYPES]);
+    rule->compat= strdup(tmp.name[COMPAT]);
+    rule->geometry= strdup(tmp.name[GEOMETRY]);
+    rule->keymap= strdup(tmp.name[KEYMAP]);
 
     rule->layout_num = rule->variant_num = 0;
     for (i = 0; i < nread; i++) {
@@ -546,7 +546,7 @@ MakeMultiDefs(XkbRF_MultiDefsPtr mdefs, XkbRF_VarDefsPtr defs)
 
    bzero((char *)mdefs,sizeof(XkbRF_MultiDefsRec));
    mdefs->model = defs->model;
-   mdefs->options = _XkbDupString(defs->options);
+   mdefs->options = strdup(defs->options);
    if (mdefs->options) squeeze_spaces(mdefs->options); 
 
    if (defs->layout) {
@@ -555,7 +555,7 @@ MakeMultiDefs(XkbRF_MultiDefsPtr mdefs, XkbRF_VarDefsPtr defs)
        } else {
            char *p;
            int i;
-           mdefs->layout[1] = _XkbDupString(defs->layout);
+           mdefs->layout[1] = strdup(defs->layout);
 	   if (mdefs->layout[1] == NULL)
 	      return False;
            squeeze_spaces(mdefs->layout[1]);
@@ -579,7 +579,7 @@ MakeMultiDefs(XkbRF_MultiDefsPtr mdefs, XkbRF_VarDefsPtr defs)
        } else {
            char *p;
            int i;
-           mdefs->variant[1] = _XkbDupString(defs->variant);
+           mdefs->variant[1] = strdup(defs->variant);
 	   if (mdefs->variant[1] == NULL)
 	      return False;
            squeeze_spaces(mdefs->variant[1]);
@@ -615,7 +615,7 @@ Apply(char *src, char **dst)
 	    *dst= _Concat(*dst, src);
         } else {
             if (*dst == NULL)
-	        *dst= _XkbDupString(src);
+	        *dst= strdup(src);
         }
     }
 }
@@ -1059,8 +1059,8 @@ XkbRF_AddVarDescCopy(XkbRF_DescribeVarsPtr vars,XkbRF_VarDescPtr from)
 XkbRF_VarDescPtr	nd;
 
     if ((nd=XkbRF_AddVarDesc(vars))!=NULL) {
-	nd->name= _XkbDupString(from->name);
-	nd->desc= _XkbDupString(from->desc);
+	nd->name= strdup(from->name);
+	nd->desc= strdup(from->desc);
     }
     return nd;
 }
@@ -1088,7 +1088,7 @@ XkbRF_AddVarToDescribe(XkbRF_RulesPtr rules,char *name)
 	rules->extra= NULL;
 	return NULL;
     }
-    rules->extra_names[rules->num_extra]= _XkbDupString(name);
+    rules->extra_names[rules->num_extra]= strdup(name);
     bzero(&rules->extra[rules->num_extra],sizeof(XkbRF_DescribeVarsRec));
     return &rules->extra[rules->num_extra++];
 }
@@ -1379,30 +1379,30 @@ Status		rtrn;
     out=(char*)data;
     end=out+nitems;
     if (out && (*out) && rf_rtrn)
-	 *rf_rtrn= _XkbDupString(out);
+	 *rf_rtrn= strdup(out);
     out+=strlen(out)+1;
 
     if (out<end) {
 	if (*out)
-	    vd_rtrn->model= _XkbDupString(out);
+	    vd_rtrn->model= strdup(out);
 	out+=strlen(out)+1;
     }
 
     if (out<end) {
 	if (*out)
-	    vd_rtrn->layout= _XkbDupString(out);
+	    vd_rtrn->layout= strdup(out);
 	out+=strlen(out)+1;
     }
 
     if (out<end) {
 	if (*out)
-	    vd_rtrn->variant= _XkbDupString(out);
+	    vd_rtrn->variant= strdup(out);
 	out+=strlen(out)+1;
     }
 
     if (out<end) {
 	if (*out)
-	    vd_rtrn->options= _XkbDupString(out);
+	    vd_rtrn->options= strdup(out);
 	out+=strlen(out)+1;
     }
 

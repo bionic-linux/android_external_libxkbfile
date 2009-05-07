@@ -377,7 +377,7 @@ XkbCFAddModByName(	XkbConfigRtrnPtr	rtrn,
 	    last->merge= merge;
 	    last->name= NULL;
 	}
-	last->name= _XkbDupString(name);
+	last->name= strdup(name);
     }
     return last;
 }
@@ -501,7 +501,7 @@ unsigned		what;
 	    }
 	    if (*str!=NULL)
 		_XkbFree(*str);
-	    *str= _XkbDupString(val.str);
+	    *str= strdup(val.str);
 	    break;
 	case _XkbCF_InitialMods:
 	case _XkbCF_IgnoreLockMods:
@@ -1060,7 +1060,7 @@ DefaultFinish(	XkbConfigFieldsPtr	fields,
 	return DefaultCleanUp(rtrn);
     if (what==XkbCF_Check) {
 	if ((rtrn->symbols==NULL)&&(rtrn->phys_symbols!=NULL))
-	    rtrn->symbols= _XkbDupString(rtrn->phys_symbols);
+	    rtrn->symbols= strdup(rtrn->phys_symbols);
     }
     if ((what==XkbCF_Apply)||(what==XkbCF_Check)) {
 	if (xkb && xkb->names && (rtrn->num_unbound_mods>0))
