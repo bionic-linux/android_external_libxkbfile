@@ -38,7 +38,9 @@ AC_PROG_LIBTOOL
 XORG_CWARNFLAGS
 
 AC_CHECK_FUNC(strcasecmp, [], AC_DEFINE([NEED_STRCASECMP], 1,
-                                        [Do not have `strcasecmp'.]))
+                                        [Do not have 'strcasecmp'.]))
+AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
+				       ['Unlocked stdio']), [])
 
 # Check for dependencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
