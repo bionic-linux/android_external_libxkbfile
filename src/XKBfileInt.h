@@ -65,6 +65,12 @@
 
 _XFUNCPROTOBEGIN
 
+static inline
+char *_XkbDupString(const char *s)
+{
+    return s ? strdup(s) : NULL;
+}
+
 #define _XkbStrCaseEqual(s1,s2)	(_XkbStrCaseCmp(s1,s2)==0)
 
 #ifdef NEED_STRCASECMP

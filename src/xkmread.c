@@ -779,9 +779,9 @@ int		nRead=0;
 	    doodad->text.height= doodadWire.text.height;
 	    doodad->text.color_ndx= doodadWire.text.color_ndx;
 	    nRead+= XkmGetCountedString(file,buf,100);
-	    doodad->text.text= strdup(buf);
+	    doodad->text.text= _XkbDupString(buf);
 	    nRead+= XkmGetCountedString(file,buf,100);
-	    doodad->text.font= strdup(buf);
+	    doodad->text.font= _XkbDupString(buf);
 	    break;
 	case XkbIndicatorDoodad:
 	    doodad->indicator.shape_ndx= doodadWire.indicator.shape_ndx;
@@ -793,7 +793,7 @@ int		nRead=0;
 	    doodad->logo.color_ndx= doodadWire.logo.color_ndx;
 	    doodad->logo.shape_ndx= doodadWire.logo.shape_ndx;
 	    nRead+= XkmGetCountedString(file,buf,100);
-	    doodad->logo.logo_name= strdup(buf);
+	    doodad->logo.logo_name= _XkbDupString(buf);
 	    break;
 	default:
 	    /* report error? */
@@ -957,7 +957,7 @@ XkbGeometrySizesRec	sizes;
     geom->width_mm= wireGeom.width_mm;
     geom->height_mm= wireGeom.height_mm;
     nRead+= XkmGetCountedString(file,buf,100);
-    geom->label_font= strdup(buf);
+    geom->label_font= _XkbDupString(buf);
     if (wireGeom.num_properties>0) {
 	char val[1024];
 	for (i=0;i<wireGeom.num_properties;i++) {
@@ -1213,7 +1213,7 @@ char 		name[100];
 		return NULL;
 	    }
 	    if (XkmGetCountedString(file,name,100)>0)
-		return strdup(name);
+		return _XkbDupString(name);
 	    break;
 	default:
 	    _XkbLibError(_XkbErrBadImplementation,
