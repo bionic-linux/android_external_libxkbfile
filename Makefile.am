@@ -24,8 +24,7 @@ SUBDIRS = src
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = xkbfile.pc
 
-EXTRA_DIST = xkbfile.pc.in ChangeLog
-MAINTAINERCLEANFILES = ChangeLog
+EXTRA_DIST = xkbfile.pc.in 
 
 .PHONY: ChangeLog
 
