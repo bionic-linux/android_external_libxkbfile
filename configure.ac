@@ -48,7 +48,7 @@ AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 
 # Obtain compiler/linker options for depedencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
-		  
+
 AC_CONFIG_FILES([Makefile
 		src/Makefile
 		xkbfile.pc])
