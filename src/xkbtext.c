@@ -229,7 +229,7 @@ char *str,buf[BUFFER_SIZE];
     return rtrn;
 }
 
-static char *modNames[XkbNumModifiers] = {
+static const char *modNames[XkbNumModifiers] = {
     "Shift", "Lock", "Control", "Mod1", "Mod2", "Mod3", "Mod4", "Mod5"
 };
 
@@ -423,7 +423,7 @@ char *rtrn;
 
 /***====================================================================***/
 
-static char *imWhichNames[]= {
+static const char *imWhichNames[]= {
 	"base",
 	"latched",
 	"locked",
@@ -477,7 +477,8 @@ char *		buf;
 char *
 XkbAccessXDetailText(unsigned state,unsigned format)
 {
-char *buf,*prefix;
+char *buf;
+const char *prefix;
 
     buf= tbGetBuffer(32);
     if (format==XkbMessage)	prefix= "";
@@ -495,7 +496,7 @@ char *buf,*prefix;
     return buf;
 }
 
-static char *nknNames[] = {
+static const char *nknNames[] = {
 	"keycodes", "geometry", "deviceID"
 };
 #define	NUM_NKN	(sizeof(nknNames)/sizeof(char *))
@@ -503,14 +504,15 @@ static char *nknNames[] = {
 char *
 XkbNKNDetailMaskText(unsigned detail,unsigned format)
 {
-char *buf,*prefix,*suffix;
+char *buf;
+const char *prefix,*suffix;
 register int 		i;
 register unsigned	bit;
 int			len,plen,slen;
 
 
     if ((detail&XkbAllNewKeyboardEventsMask)==0) {
-	char *tmp = "";
+	const char *tmp = "";
 	if (format==XkbCFile)			tmp= "0";
 	else if (format==XkbMessage)		tmp= "none";
 	buf=  tbGetBuffer(strlen(tmp)+1);
@@ -518,7 +520,7 @@ int			len,plen,slen;
 	return buf;
     }
     else if ((detail&XkbAllNewKeyboardEventsMask)==XkbAllNewKeyboardEventsMask){
-	char *	tmp;
+	const char *	tmp;
 	if (format==XkbCFile)		tmp= "XkbAllNewKeyboardEventsMask";
 	else 				tmp= "all";
 	buf=  tbGetBuffer(strlen(tmp)+1);
@@ -568,7 +570,7 @@ int			len,plen,slen;
     return buf;
 }
 
-static char *ctrlNames[] = {
+static const char *ctrlNames[] = {
 	"repeatKeys",
 	"slowKeys",
 	"bounceKeys",
@@ -772,7 +774,7 @@ char *rtrn;
 /***====================================================================***/
 
 static int
-TryCopyStr(char *to,char *from,int *pLeft)
+TryCopyStr(char *to,const char *from,int *pLeft)
 {
 register int len;
     if (*pLeft>0) {

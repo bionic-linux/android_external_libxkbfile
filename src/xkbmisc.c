@@ -218,7 +218,7 @@ int		nG,eG;
 /***===================================================================***/
 
 static Bool
-XkbWriteSectionFromName(FILE *file,char *sectionName,char *name)
+XkbWriteSectionFromName(FILE *file, const char *sectionName, const char *name)
 {
     fprintf(file,"    xkb_%-20s { include \"%s\" };\n",sectionName,name);
     return True;

@@ -1307,7 +1307,7 @@ BAILOUT:
 void
 XkbCFReportError(FILE *file,char *name,int error,int line)
 {
-char *	msg;
+const char *msg;
 
     switch(error) {
 	case XkbCF_BadAlloc:

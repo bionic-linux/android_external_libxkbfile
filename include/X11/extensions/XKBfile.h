@@ -83,9 +83,9 @@ typedef void	(*XkbFileAddOnFunc)(
 #define	_XkbErrXReqFailure		25
 #define	_XkbErrBadImplementation	26
 
-extern char *		_XkbErrMessages[];
+extern const char *	_XkbErrMessages[];
 extern unsigned		_XkbErrCode;
-extern char *		_XkbErrLocation;
+extern const char *	_XkbErrLocation;
 extern unsigned		_XkbErrData;
 
 /***====================================================================***/
