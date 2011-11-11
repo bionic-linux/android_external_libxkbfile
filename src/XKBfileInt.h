@@ -75,6 +75,7 @@ char *_XkbDupString(const char *s)
 extern int _XkbStrCaseCmp(char *s1, char *s2);
 #else
 #define _XkbStrCaseCmp strcasecmp
+#include <strings.h>
 #endif
 
 _XFUNCPROTOEND
