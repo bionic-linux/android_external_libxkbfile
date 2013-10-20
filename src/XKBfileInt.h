@@ -63,8 +63,8 @@
 
 _XFUNCPROTOBEGIN
 
-static inline
-char *_XkbDupString(const char *s)
+static inline char *
+_XkbDupString(const char *s)
 {
     return s ? strdup(s) : NULL;
 }
@@ -79,5 +79,4 @@ extern int _XkbStrCaseCmp(char *s1, char *s2);
 #endif
 
 _XFUNCPROTOEND
-
-#endif /* _XKBFILEINT_H_ */
+#endif                          /* _XKBFILEINT_H_ */
