@@ -37,7 +37,6 @@
 #include <X11/Xos.h>
 #include <X11/Xfuncs.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
@@ -46,21 +45,6 @@
 #include "XKMformat.h"
 #include "XKBfileInt.h"
 
-#else
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <X11/Xproto.h>
-#include "misc.h"
-#include "inputstr.h"
-#include "dix.h"
-#include <X11/extensions/XKBstr.h>
-#define XKBSRV_NEED_FILE_FUNCS	1
-#include <X11/extensions/XKBsrv.h>
-#include <X11/extensions/XKBgeom.h>
-#include "xkb.h"
-
-#endif
 
 unsigned
 _XkbKSCheckCase(KeySym ks)

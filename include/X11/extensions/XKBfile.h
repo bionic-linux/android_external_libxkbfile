@@ -233,14 +233,12 @@ extern	Bool	XkbLookupGroupAndLevel(
 
 /***====================================================================***/
 
-#ifndef XKB_IN_SERVER
 
 extern Bool	XkbLookupCanonicalRGBColor(
     char *	/* def */,
     XColor *	/* color */
 );
 
-#endif
 
 /***====================================================================***/
 

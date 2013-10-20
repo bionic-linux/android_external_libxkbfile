@@ -39,7 +39,6 @@
 	{ _XkbErrCode= (c); _XkbErrLocation= (l); _XkbErrData= (d); }
 #endif
 
-#ifndef XKB_IN_SERVER
 
 #define	_XkbAlloc(s)		malloc((s))
 #define	_XkbCalloc(n,s)		calloc((n),(s))
@@ -59,7 +58,6 @@
 #endif
 #endif
 
-#endif
 
 _XFUNCPROTOBEGIN
 

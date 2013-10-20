@@ -36,7 +36,6 @@
 
 #include <X11/Xos.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -45,19 +44,6 @@
 #include "XKMformat.h"
 #include "XKBfileInt.h"
 
-#else
-
-#include <X11/X.h>
-#include <X11/Xproto.h>
-#include "misc.h"
-#include "inputstr.h"
-#include "dix.h"
-#include <X11/extensions/XKBstr.h>
-#define XKBSRV_NEED_FILE_FUNCS	1
-#include <X11/extensions/XKBsrv.h>
-#include <X11/extensions/XKBgeom.h>
-
-#endif
 
 /***====================================================================***/
 
@@ -372,7 +358,6 @@ XkbKeysymText(KeySym sym, unsigned format)
 {
     static char buf[32], *rtrn;
 
-#ifndef XKB_IN_SERVER
     if (sym == NoSymbol)
         strcpy(rtrn = buf, "NoSymbol");
     else if ((rtrn = XKeysymToString(sym)) == NULL)
@@ -382,13 +367,6 @@ XkbKeysymText(KeySym sym, unsigned format)
         rtrn = buf;
     }
     return rtrn;
-#else                           /* def XKB_IN_SERVER */
-    if (sym == NoSymbol)
-        strcpy(rtrn = buf, "NoSymbol");
-    else
-        sprintf(rtrn = buf, "0x%lx", (long) sym);
-    return rtrn;
-#endif                          /* XKB_IN_SERVER */
 }
 
 char *
@@ -1487,7 +1465,6 @@ XkbIndentText(unsigned size)
     return buf;
 }
 
-#ifndef XKB_IN_SERVER
 
 /***====================================================================***/
 
@@ -1573,4 +1550,3 @@ XkbLookupCanonicalRGBColor(char *def, XColor *color)
     return False;
 }
 
-#endif

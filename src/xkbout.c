@@ -35,7 +35,6 @@
 #include <stdlib.h>
 #include <X11/Xfuncs.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -44,22 +43,6 @@
 #include "XKMformat.h"
 #include "XKBfileInt.h"
 
-#else
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <X11/Xproto.h>
-#include "misc.h"
-#include "inputstr.h"
-#include "dix.h"
-#include <X11/extensions/XKBstr.h>
-#define XKBSRV_NEED_FILE_FUNCS	1
-#include <X11/extensions/XKBsrv.h>
-
-#include <X11/extensions/XKBgeom.h>
-#include <X11/extensions/XKBfile.h>
-
-#endif
 
 #define	VMOD_HIDE_VALUE	0
 #define	VMOD_SHOW_VALUE	1

@@ -38,7 +38,6 @@
 
 #include <X11/Xfuncs.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <X11/Xos.h>
 #include <X11/Xlib.h>
@@ -46,17 +45,6 @@
 #include <X11/XKBlib.h>
 #include "XKBfileInt.h"
 
-#else
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <X11/Xproto.h>
-#include "misc.h"
-#include "inputstr.h"
-#include "dix.h"
-#define	XKBSRV_NEED_FILE_FUNCS
-#include <X11/extensions/XKBsrv.h>
-#endif
 
 #include <X11/extensions/XKBconfig.h>
 
@@ -1353,18 +1341,10 @@ XkbCFReportError(FILE *file, char *name, int error, int line)
         msg = "unknown error on line %d";
         break;
     }
-#ifndef XKB_IN_SERVER
     fprintf(file, msg, line);
     if (name)
         fprintf(file, " of %s\n", name);
     else
         fprintf(file, "\n");
-#else
-    ErrorF(msg, line);
-    if (name)
-        ErrorF(" of %s\n", name);
-    else
-        ErrorF("\n");
-#endif
     return;
 }

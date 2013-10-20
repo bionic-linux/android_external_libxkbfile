@@ -35,7 +35,6 @@
 #include <X11/Xos.h>
 #include <X11/Xfuncs.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <stdlib.h>
 #include <X11/Xlib.h>
@@ -47,27 +46,6 @@
 #include "XKMformat.h"
 #include "XKBfileInt.h"
 
-#else
-
-#include <X11/X.h>
-#include <X11/Xproto.h>
-#include <X11/keysym.h>
-#include "misc.h"
-#include "inputstr.h"
-#include <X11/extensions/XKBstr.h>
-#define	 XKBSRV_NEED_FILE_FUNCS
-#include <X11/extensions/XKBsrv.h>
-#include <X11/extensions/XKBgeom.h>
-
-Atom
-XkbInternAtom(Display * dpy, char *str, Bool only_if_exists)
-{
-    if (str == NULL)
-        return None;
-    return MakeAtom(str, strlen(str), !only_if_exists);
-}
-
-#endif
 
 #ifndef SEEK_SET
 #define	SEEK_SET 0

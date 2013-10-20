@@ -38,7 +38,6 @@
 #define XOS_USE_NO_LOCKING
 #include <X11/Xos_r.h>
 
-#ifndef XKB_IN_SERVER
 
 #include <X11/Xproto.h>
 #include <X11/Xlib.h>
@@ -52,22 +51,6 @@
 #include "XKBfileInt.h"
 #include "XKBrules.h"
 
-#else
-
-#include <X11/Xproto.h>
-#include <X11/X.h>
-#include <X11/Xos.h>
-#include <X11/Xfuncs.h>
-#include <X11/Xatom.h>
-#include <X11/keysym.h>
-#include "misc.h"
-#include "inputstr.h"
-#include "dix.h"
-#include <X11/extensions/XKBstr.h>
-#define XKBSRV_NEED_FILE_FUNCS
-#include <X11/extensions/XKBsrv.h>
-
-#endif
 
 #ifdef DEBUG
 #define PR_DEBUG(s)		fprintf(stderr,s)
@@ -1411,7 +1394,6 @@ XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules)
     return;
 }
 
-#ifndef XKB_IN_SERVER
 
 Bool
 XkbRF_GetNamesProp(Display * dpy, char **rf_rtrn, XkbRF_VarDefsPtr vd_rtrn)
@@ -1541,4 +1523,3 @@ XkbRF_SetNamesProp(Display *dpy, char *rules_file, XkbRF_VarDefsPtr var_defs)
     return True;
 }
 
-#endif
