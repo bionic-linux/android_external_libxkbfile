@@ -86,8 +86,8 @@ WriteCHdrKeycodes(FILE * file, XkbDescPtr xkb)
                 XkbAtomText(xkb->dpy, kcName, XkbMessage));
     fprintf(file, "static XkbKeyNameRec	keyNames[NUM_KEYS]= {\n");
     for (i = 0; i <= xkb->max_key_code; i++) {
-        sprintf(buf, "\"%s\"",
-                XkbKeyNameText(xkb->names->keys[i].name, XkbCFile));
+        snprintf(buf, sizeof(buf), "\"%s\"",
+                 XkbKeyNameText(xkb->names->keys[i].name, XkbCFile));
         if (i != xkb->max_key_code) {
             fprintf(file, "    {  %6s  },", buf);
             if ((i & 3) == 3)
