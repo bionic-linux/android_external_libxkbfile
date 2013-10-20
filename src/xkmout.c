@@ -136,11 +136,11 @@ SizeXKMVirtualMods(XkbFileInfo *result, XkmInfo *info,
     register unsigned i, bit;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->names) || (!xkb->server)) {
         _XkbLibError(_XkbErrMissingVMods, "SizeXKMVirtualMods", 0);
         return 0;
     }
+    dpy = xkb->dpy;
     bound = named = 0;
     for (i = nBound = nNamed = szNames = 0, bit = 1; i < XkbNumVirtualMods;
          i++, bit <<= 1) {
@@ -207,11 +207,11 @@ SizeXKMKeycodes(XkbFileInfo *result, xkmSectionInfo *toc, int *offset_inout)
     Display *dpy;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->names) || (!xkb->names->keys)) {
         _XkbLibError(_XkbErrMissingNames, "SizeXKMKeycodes", 0);
         return 0;
     }
+    dpy = xkb->dpy;
     kcName = xkb->names->keycodes;
     size += 4;                  /* min and max keycode */
     size += xkmSizeCountedAtomString(dpy, kcName);
@@ -271,11 +271,11 @@ SizeXKMKeyTypes(XkbFileInfo *result, xkmSectionInfo *toc, int *offset_inout)
     char *name;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->map) || (!xkb->map->types)) {
         _XkbLibError(_XkbErrMissingTypes, "SizeXKBKeyTypes", 0);
         return 0;
     }
+    dpy = xkb->dpy;
     if (xkb->map->num_types < XkbNumRequiredTypes) {
         _XkbLibError(_XkbErrMissingReqTypes, "SizeXKBKeyTypes", 0);
         return 0;
@@ -390,11 +390,11 @@ SizeXKMCompatMap(XkbFileInfo *result, XkmInfo *info,
     Display *dpy;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->compat) || (!xkb->compat->sym_interpret)) {
         _XkbLibError(_XkbErrMissingCompatMap, "SizeXKMCompatMap", 0);
         return 0;
     }
+    dpy = xkb->dpy;
     if (xkb->names)
         name = XkbAtomGetString(dpy, xkb->names->compat);
     else
@@ -490,11 +490,11 @@ SizeXKMSymbols(XkbFileInfo *result, XkmInfo *info,
     char *name;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->map) || ((!xkb->map->syms))) {
         _XkbLibError(_XkbErrMissingSymbols, "SizeXKMSymbols", 0);
         return 0;
     }
+    dpy = xkb->dpy;
     if (xkb->names && (xkb->names->symbols != None))
         name = XkbAtomGetString(dpy, xkb->names->symbols);
     else
@@ -673,11 +673,11 @@ SizeXKMIndicators(XkbFileInfo *result, XkmInfo *info,
     register unsigned i, nLEDs;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((xkb == NULL) || (xkb->indicators == NULL)) {
 /*	_XkbLibError(_XkbErrMissingIndicators,"SizeXKMIndicators",0);*/
         return 0;
     }
+    dpy = xkb->dpy;
     nLEDs = 0;
     size = 8; /* number of indicator maps/physical indicators */
     if (xkb->indicators != NULL) {
@@ -830,9 +830,9 @@ SizeXKMGeometry(XkbFileInfo *result, xkmSectionInfo *toc, int *offset_inout)
     unsigned size;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->geom))
         return 0;
+    dpy = xkb->dpy;
     geom = xkb->geom;
     size = xkmSizeCountedAtomString(dpy, geom->name);
     size += SIZEOF(xkmGeometryDesc);
@@ -1067,9 +1067,9 @@ WriteXKMGeometry(FILE *file, XkbFileInfo *result)
     unsigned tmp, size = 0;
 
     xkb = result->xkb;
-    dpy = xkb->dpy;
     if ((!xkb) || (!xkb->geom))
         return 0;
+    dpy = xkb->dpy;
     geom = xkb->geom;
     wire.width_mm = geom->width_mm;
     wire.height_mm = geom->height_mm;
