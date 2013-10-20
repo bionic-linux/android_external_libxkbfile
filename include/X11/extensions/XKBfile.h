@@ -249,7 +249,7 @@ extern	char *	XkbAtomGetString(
 
 extern	Atom	XkbInternAtom(
     Display *	/* dpy */,
-    char *	/* name */,
+    const char */* name */,
     Bool	/* onlyIfExists */
 );
 

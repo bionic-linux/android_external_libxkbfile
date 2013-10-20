@@ -103,7 +103,7 @@ static unsigned long tableLength;
 static NodePtr *nodeTable;
 
 static Atom
-_XkbMakeAtom(char *string, unsigned len, Bool makeit)
+_XkbMakeAtom(const char *string, unsigned len, Bool makeit)
 {
     register NodePtr *np;
     unsigned i;
@@ -204,7 +204,7 @@ XkbAtomGetString(Display *dpy, Atom atm)
 /***====================================================================***/
 
 Atom
-XkbInternAtom(Display *dpy, char *name, Bool onlyIfExists)
+XkbInternAtom(Display *dpy, const char *name, Bool onlyIfExists)
 {
     if (name == NULL)
         return None;
