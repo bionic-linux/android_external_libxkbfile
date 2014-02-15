@@ -1262,6 +1262,8 @@ CopyActionMessageArgs(Display *dpy, XkbDescPtr xkb, XkbAction *action,
     TryCopyStr(buf, tbuf, sz);
     snprintf(tbuf, sizeof(tbuf), ",data[5]=0x%02x", act->message[5]);
     TryCopyStr(buf, tbuf, sz);
+    if (act->flags & XkbSA_MessageGenKeyEvent)
+        TryCopyStr(buf, ",genKeyEvent", sz);
     return True;
 }
 
