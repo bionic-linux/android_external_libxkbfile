@@ -920,11 +920,11 @@ CopyGroupActionArgs(Display *dpy, XkbDescPtr xkb, XkbAction *action,
     act = &action->group;
     TryCopyStr(buf, "group=", sz);
     if (act->flags & XkbSA_GroupAbsolute)
-        snprintf(tbuf, sizeof(buf), "%d", XkbSAGroup(act) + 1);
+        snprintf(tbuf, sizeof(tbuf), "%d", XkbSAGroup(act) + 1);
     else if (XkbSAGroup(act) < 0)
-        snprintf(tbuf, sizeof(buf), "%d", XkbSAGroup(act));
+        snprintf(tbuf, sizeof(tbuf), "%d", XkbSAGroup(act));
     else
-        snprintf(tbuf, sizeof(buf), "+%d", XkbSAGroup(act));
+        snprintf(tbuf, sizeof(tbuf), "+%d", XkbSAGroup(act));
     TryCopyStr(buf, tbuf, sz);
     if (act->type == XkbSA_LockGroup)
         return True;
