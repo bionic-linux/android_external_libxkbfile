@@ -1261,11 +1261,7 @@ XkmReadFile(FILE *file, unsigned need, unsigned want, XkbFileInfo *result)
     if (result->xkb == NULL)
         result->xkb = XkbAllocKeyboard();
     for (i = 0; i < fileInfo.num_toc; i++) {
-#ifdef SEEK_SET
         fseek(file, toc[i].offset, SEEK_SET);
-#else
-        fseek(file, toc[i].offset, 0);
-#endif
         tmp = fread(&tmpTOC, SIZEOF(xkmSectionInfo), 1, file);
         nRead = tmp * SIZEOF(xkmSectionInfo);
         if ((tmpTOC.type != toc[i].type) || (tmpTOC.format != toc[i].format) ||
