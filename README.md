@@ -1,6 +1,9 @@
 libxkbfile - XKB file handling routines
 ---------------------------------------
 
+libxkbfile is used by the X servers and utilities to parse the XKB
+configuration data files.
+
 All questions regarding this software should be directed at the
 Xorg mailing list:
 
