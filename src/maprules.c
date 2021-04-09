@@ -1523,3 +1523,29 @@ XkbRF_SetNamesProp(Display *dpy, char *rules_file, XkbRF_VarDefsPtr var_defs)
     return True;
 }
 
+void
+XkbRF_FreeVarDefs(XkbRF_VarDefsPtr var_defs, Bool freeVarDefs)
+{
+    if (var_defs) {
+        _XkbFree(var_defs->model);
+        var_defs->model = NULL;
+
+        _XkbFree(var_defs->layout);
+        var_defs->layout = NULL;
+
+        _XkbFree(var_defs->variant);
+        var_defs->variant = NULL;
+
+        _XkbFree(var_defs->options);
+        var_defs->options = NULL;
+
+//      free also if allocated in XkbRF_GetNamesProp
+//        _XkbFree(var_defs->extra_options);
+//        var_defs->extra_options = NULL;
+//        _XkbFree(var_defs->extra_rules);
+//        var_defs->extra_options = NULL;
+    }
+    if (freeVarDefs) {
+        _XkbFree(var_defs);
+    }
+}
