@@ -126,7 +126,7 @@ XkbVModIndexText(Display *dpy, XkbDescPtr xkb, unsigned ndx, unsigned format)
 
     len = strlen(tmp) + 1;
     if (format == XkbCFile)
-        len += 4;
+        len += 5;
     if (len >= BUFFER_SIZE)
         len = BUFFER_SIZE - 1;
     rtrn = tbGetBuffer(len);
