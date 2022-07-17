@@ -44,7 +44,7 @@ AC_CHECK_FUNCS([strcasecmp strndup])
 AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 				       ['Unlocked stdio']), [])
 
-# Obtain compiler/linker options for depedencies
+# Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
 
 AC_CONFIG_FILES([Makefile
