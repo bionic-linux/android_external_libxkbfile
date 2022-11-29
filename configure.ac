@@ -48,6 +48,9 @@ AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 # Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
 
+# Checks for typedefs, structures, and compiler characteristics.
+AC_SYS_LARGEFILE
+
 AC_CONFIG_FILES([Makefile
 		src/Makefile
 		xkbfile.pc])
