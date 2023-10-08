@@ -1299,49 +1299,49 @@ XkbCFReportError(FILE *file, char *name, int error, int line)
 
     switch (error) {
     case XkbCF_BadAlloc:
-        msg = "allocation failed\n";
+        msg = "allocation failed";
         break;
     case XkbCF_UnterminatedString:
-        msg = "unterminated string on line %d";
+        msg = "unterminated string";
         break;
     case XkbCF_MissingIdent:
-        msg = "expected identifier on line %d";
+        msg = "expected identifier";
         break;
     case XkbCF_MissingEquals:
-        msg = "expected '=' on line %d";
+        msg = "expected '='";
         break;
     case XkbCF_ExpectedEOS:
-        msg = "expected ';' or newline on line %d";
+        msg = "expected ';' or newline";
         break;
     case XkbCF_ExpectedBoolean:
-        msg = "expected a boolean value on line %d";
+        msg = "expected a boolean value";
         break;
     case XkbCF_ExpectedInteger:
-        msg = "expected a numeric value on line %d";
+        msg = "expected a numeric value";
         break;
     case XkbCF_ExpectedString:
-        msg = "expected a string on line %d";
+        msg = "expected a string";
         break;
     case XkbCF_ExpectedModifier:
-        msg = "expected a modifier name on line %d";
+        msg = "expected a modifier name";
         break;
     case XkbCF_ExpectedControl:
-        msg = "expected a control name on line %d";
+        msg = "expected a control name";
         break;
     case XkbCF_ExpectedAXOption:
-        msg = "expected an AccessX option on line %d";
+        msg = "expected an AccessX option";
         break;
     case XkbCF_ExpectedOperator:
-        msg = "expected '+' or '-' on line %d";
+        msg = "expected '+' or '-'";
         break;
     case XkbCF_ExpectedOORGroupBehavior:
-        msg = "expected wrap, clamp or group number on line %d";
+        msg = "expected wrap, clamp or group number";
         break;
     default:
-        msg = "unknown error on line %d";
+        msg = "unknown error";
         break;
     }
-    fprintf(file, msg, line);
+    fprintf(file, "%s on line %d", msg, line);
     if (name)
         fprintf(file, " of %s\n", name);
     else
