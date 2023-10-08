@@ -1522,7 +1522,7 @@ char *
 XkbIndentText(unsigned size)
 {
     static char buf[32];
-    register int i;
+    unsigned int i;
 
     if (size > 31)
         size = 31;
