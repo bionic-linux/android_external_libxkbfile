@@ -225,12 +225,13 @@ XkbInternAtom(Display *dpy, const char *name, Bool onlyIfExists)
 Atom
 XkbChangeAtomDisplay(Display *oldDpy, Display *newDpy, Atom atm)
 {
-    char *tmp;
-
     if (atm != None) {
-        tmp = XkbAtomGetString(oldDpy, atm);
-        if (tmp != NULL)
-            return XkbInternAtom(newDpy, tmp, False);
+        char *tmp = XkbAtomGetString(oldDpy, atm);
+        if (tmp != NULL) {
+            Atom a = XkbInternAtom(newDpy, tmp, False);
+            _XkbFree(tmp);
+            return a;
+        }
     }
     return None;
 }
