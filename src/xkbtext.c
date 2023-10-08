@@ -548,7 +548,7 @@ XkbNKNDetailMaskText(unsigned detail, unsigned format)
 {
     char *buf;
     const char *prefix, *suffix;
-    register int i;
+    unsigned int i;
     register unsigned bit;
     int len, plen, slen;
 
