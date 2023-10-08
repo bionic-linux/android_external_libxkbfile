@@ -100,7 +100,7 @@ typedef struct _Node {
 static Atom lastAtom = None;
 static NodePtr atomRoot = (NodePtr) NULL;
 static unsigned long tableLength;
-static NodePtr *nodeTable;
+static NodePtr *nodeTable = NULL;
 
 static Atom
 _XkbMakeAtom(const char *string, size_t len, Bool makeit)
@@ -191,7 +191,8 @@ _XkbInitAtoms(void)
 {
     tableLength = InitialTableSize;
     nodeTable = (NodePtr *) _XkbAlloc(InitialTableSize * sizeof(NodePtr));
-    nodeTable[None] = (NodePtr) NULL;
+    if (nodeTable != NULL)
+        nodeTable[None] = (NodePtr) NULL;
 }
 
 /***====================================================================***/
@@ -239,11 +240,8 @@ XkbChangeAtomDisplay(Display *oldDpy, Display *newDpy, Atom atm)
 void
 XkbInitAtoms(Display *dpy)
 {
-    static int been_here = 0;
-
-    if ((dpy == NULL) && (!been_here)) {
+    if ((dpy == NULL) && (nodeTable == NULL)) {
         _XkbInitAtoms();
-        been_here = 1;
     }
     return;
 }
