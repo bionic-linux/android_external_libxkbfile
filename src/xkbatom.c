@@ -156,8 +156,7 @@ _XkbMakeAtom(const char *string, size_t len, Bool makeit)
                                             tableLength * (2 *
                                                            sizeof(NodePtr)));
             if (!table) {
-                if (nd->string != string)
-                    _XkbFree(nd->string);
+                _XkbFree(nd->string);
                 _XkbFree(nd);
                 return BAD_RESOURCE;
             }
