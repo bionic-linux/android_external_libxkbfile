@@ -36,8 +36,8 @@ typedef struct _XkbRF_VarDefs {
 	char *			options;
 	unsigned short		sz_extra;
 	unsigned short		num_extra;
-	char *			extra_names;
-	char **			extra_values;
+	char *			extra_names; // not used (keep in sync XkbRF_GetNamesProp/XkbRF_FreeVarDefs)
+	char **			extra_values;// not used (keep in sync XkbRF_GetNamesProp/XkbRF_FreeVarDefs)
 } XkbRF_VarDefsRec,*XkbRF_VarDefsPtr;
 
 typedef struct _XkbRF_VarDesc {
@@ -178,11 +178,10 @@ extern void XkbRF_Free(
 #define	_XKB_RF_NAMES_PROP_ATOM		"_XKB_RULES_NAMES"
 #define	_XKB_RF_NAMES_PROP_MAXLEN	1024
 
-
 extern Bool XkbRF_GetNamesProp(
-   Display *		/* dpy */,
-   char **		/* rules_file_rtrn */,
-   XkbRF_VarDefsPtr	/* var_defs_rtrn */
+   Display * /* dpy */,
+   char **   /* rules_file_rtrn - caller has to free explicitly */,
+   XkbRF_VarDefsPtr	/* var_defs_rtrn - caller has to free explicitly with XkbRF_FreeVarDefs */
 );
 
 extern Bool XkbRF_SetNamesProp(
@@ -191,6 +190,10 @@ extern Bool XkbRF_SetNamesProp(
    XkbRF_VarDefsPtr	/* var_defs */
 );
 
+extern void XkbRF_FreeVarDefs(
+   XkbRF_VarDefsPtr /* var_defs */,
+   Bool             /* freeVarDefs */
+);
 
 _XFUNCPROTOEND
 
