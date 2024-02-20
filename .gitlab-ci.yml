@@ -17,6 +17,10 @@ include:
     file: '/templates/ci-fairy.yml'
   - template: Security/SAST.gitlab-ci.yml
 
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_PIPELINE_SOURCE == 'push'
 
 stages:
   - prep             # prep work like rebuilding the container images if there is a change
