@@ -191,6 +191,18 @@ extern Bool XkbRF_SetNamesProp(
    XkbRF_VarDefsPtr	/* var_defs */
 );
 
+/**
+ * @brief Destroy @struct XkbRF_VarDefsRec
+ * @param[in] var_defs    - a XkbRF_VarDefsRec to clean up
+ * @param[in] freeVarDefs - if @c True also free the @p var_defs itself
+ *
+ * Frees the memory associated with the @p var_defs. If @p free_var_defs is
+ * @c True also frees the @p var_defs pointer itself.
+ */
+extern void XkbRF_FreeVarDefs(
+   XkbRF_VarDefsPtr /* var_defs */,
+   Bool             /* freeVarDefs */
+);
 
 _XFUNCPROTOEND
 

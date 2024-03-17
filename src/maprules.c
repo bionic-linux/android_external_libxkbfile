@@ -1458,7 +1458,10 @@ XkbRF_GetNamesProp(Display * dpy, char **rf_rtrn, XkbRF_VarDefsPtr vd_rtrn)
             vd_rtrn->options = _XkbDupString(out);
         out += strlen(out) + 1;
     }
-
+    /*
+     * For now extra_options and extra_rules are not used
+     * update XkbRF_FreeVarDefs if that changes
+     */
     XFree(data);
     return True;
 }
@@ -1528,3 +1531,26 @@ XkbRF_SetNamesProp(Display *dpy, char *rules_file, XkbRF_VarDefsPtr var_defs)
     return True;
 }
 
+void
+XkbRF_FreeVarDefs(XkbRF_VarDefsPtr var_defs, Bool freeVarDefs)
+{
+    if (!var_defs)
+        return;
+
+    _XkbFree(var_defs->model);
+    var_defs->model = NULL;
+    _XkbFree(var_defs->layout);
+    var_defs->layout = NULL;
+    _XkbFree(var_defs->variant);
+    var_defs->variant = NULL;
+    _XkbFree(var_defs->options);
+    var_defs->options = NULL;
+
+    _XkbFree(var_defs->extra_names);
+    var_defs->extra_names = NULL;
+    _XkbFree(var_defs->extra_values);
+    var_defs->extra_values = NULL;
+
+    if(freeVarDefs)
+        _XkbFree(var_defs);
+}
