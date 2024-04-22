@@ -29,6 +29,7 @@
 
 #include "XKBfile.h"
 #include <string.h>
+#include <strings.h>
 
 #ifdef DEBUG
 #define	_XkbLibError(c,l,d) \
@@ -68,13 +69,7 @@ _XkbDupString(const char *s)
 }
 
 #define _XkbStrCaseEqual(s1,s2)	(_XkbStrCaseCmp(s1,s2)==0)
-
-#ifndef HAVE_STRCASECMP
-extern int _XkbStrCaseCmp(char *s1, char *s2);
-#else
 #define _XkbStrCaseCmp strcasecmp
-#include <strings.h>
-#endif
 
 _XFUNCPROTOEND
 #endif                          /* _XKBFILEINT_H_ */

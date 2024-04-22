@@ -7,7 +7,6 @@ project('libxkbfile', 'c',
 cc = meson.get_compiler('c')
 
 cc_conf = configuration_data({
-    'HAVE_STRCASECMP': cc.has_function('strcasecmp') ? '1' : false,
     'HAVE_STRNDUP': cc.has_function('strndup') and
                     cc.has_header_symbol('string.h', 'strndup') ? '1' : false,
     'HAVE_UNLOCKED_STDIO': cc.has_function('getc_unlocked') ? '1' : false
