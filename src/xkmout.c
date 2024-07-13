@@ -724,8 +724,8 @@ WriteXKMIndicators(FILE *file, XkbFileInfo *result, XkmInfo *info)
     dpy = xkb->dpy;
     size += xkmPutCARD8(file, info->num_leds);
     size += xkmPutPadding(file, 3);
-    size += xkmPutCARD32(file, xkb->indicators->phys_indicators);
     if (xkb->indicators != NULL) {
+        size += xkmPutCARD32(file, xkb->indicators->phys_indicators);
         for (i = 0; i < XkbNumIndicators; i++) {
             XkbIndicatorMapPtr map = &xkb->indicators->maps[i];
 
@@ -754,6 +754,9 @@ WriteXKMIndicators(FILE *file, XkbFileInfo *result, XkmInfo *info)
                 size += tmp * SIZEOF(xkmIndicatorMapDesc);
             }
         }
+    }
+    else {
+        size += xkmPutCARD32(file, 0);
     }
     return size;
 }
