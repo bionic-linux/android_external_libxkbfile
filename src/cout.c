@@ -1069,7 +1069,7 @@ XkbWriteCFile(FILE *out, char *name, XkbFileInfo *result)
     else {
         char *tmp, *hdrdef;
 
-        tmp = (char *) strrchr(name, '/');
+        tmp = strrchr(name, '/');
         if (tmp == NULL)
             tmp = name;
         else

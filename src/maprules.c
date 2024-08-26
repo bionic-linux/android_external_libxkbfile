@@ -106,12 +106,11 @@ InputLineAddChar(InputLine *line, int ch)
 {
     if (line->num_line >= line->sz_line) {
         if (line->line == line->buf) {
-            line->line = (char *) _XkbAlloc(line->sz_line * 2);
+            line->line = _XkbAlloc(line->sz_line * 2);
             memcpy(line->line, line->buf, line->sz_line);
         }
         else {
-            line->line =
-                (char *) _XkbRealloc((char *) line->line, line->sz_line * 2);
+            line->line = _XkbRealloc(line->line, line->sz_line * 2);
         }
         line->sz_line *= 2;
     }
@@ -1417,7 +1416,7 @@ XkbRF_GetNamesProp(Display * dpy, char **rf_rtrn, XkbRF_VarDefsPtr vd_rtrn)
                               0L, _XKB_RF_NAMES_PROP_MAXLEN, False,
                               XA_STRING, &actual_type,
                               &fmt, &nitems, &bytes_after,
-                              (unsigned char **) &data);
+                              &data);
     if (rtrn != Success)
         return False;
     if (rf_rtrn)

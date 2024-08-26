@@ -331,8 +331,7 @@ ReadXkmKeyTypes(FILE *file, XkbFileInfo *result, XkbChangesPtr changes)
             return -1;
         }
         for (n = 0, entry = type->map; n < wire.nMapEntries; n++, entry++) {
-            if (fread(&wire_entry, SIZEOF(xkmKTMapEntryDesc), 1, file) <
-                (int) 1) {
+            if (fread(&wire_entry, SIZEOF(xkmKTMapEntryDesc), 1, file) < 1) {
                 _XkbLibError(_XkbErrBadLength, "ReadXkmKeyTypes", 0);
                 return -1;
             }
