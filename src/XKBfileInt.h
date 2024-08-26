@@ -27,6 +27,12 @@
 
  ********************************************************/
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <X11/Xfuncproto.h>
+
 #include "XKBfile.h"
 #include <string.h>
 #include <strings.h>
@@ -44,10 +50,13 @@
 #define	_XkbAlloc(s)		malloc((s))
 #define	_XkbCalloc(n,s)		calloc((n),(s))
 #define	_XkbRealloc(o,s)	realloc((o),(s))
+#define	_XkbReallocF(o,s)	reallocf((o),(s))
 #define	_XkbTypedAlloc(t)	((t *)malloc(sizeof(t)))
 #define	_XkbTypedCalloc(n,t)	((t *)calloc((n),sizeof(t)))
 #define	_XkbTypedRealloc(o,n,t) \
 	((o)?(t *)realloc((o),(n)*sizeof(t)):_XkbTypedCalloc(n,t))
+#define	_XkbTypedReallocF(o,n,t) \
+	((o)?(t *)reallocf((o),(n)*sizeof(t)):_XkbTypedCalloc(n,t))
 #define	_XkbClearElems(a,f,l,t)	bzero(&(a)[f],((l)-(f)+1)*sizeof(t))
 #define	_XkbFree(p)		free(p)
 
@@ -61,6 +70,20 @@
 
 
 _XFUNCPROTOBEGIN
+
+#ifndef HAVE_REALLOCF
+/* realloc variant that frees old pointer on failure */
+static inline void *
+reallocf(void *old, size_t size)
+{
+    void *new = realloc(old, size);
+
+    if (_X_UNLIKELY(new == NULL))
+        free(old);
+
+    return new;
+}
+#endif
 
 static inline char *
 _XkbDupString(const char *s)

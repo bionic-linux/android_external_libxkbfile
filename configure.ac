@@ -42,12 +42,12 @@ XORG_MACROS_VERSION(1.8)
 XORG_DEFAULT_OPTIONS
 
 # Checks for library functions.
-AC_CHECK_FUNCS([strndup])
+AC_CHECK_FUNCS([reallocf strndup])
 AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 				       ['Unlocked stdio']), [])
 
 # Obtain compiler/linker options for dependencies
-PKG_CHECK_MODULES(XKBFILE, x11 kbproto)
+PKG_CHECK_MODULES(XKBFILE, [x11 kbproto xproto >= 7.0.9])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_SYS_LARGEFILE
