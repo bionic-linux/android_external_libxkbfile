@@ -1121,7 +1121,9 @@ XkbRF_AddVarToDescribe(XkbRF_RulesPtr rules, char *name)
     if ((!rules->extra_names) || (!rules->extra)) {
         PR_DEBUG("allocation error in extra parts\n");
         rules->sz_extra = rules->num_extra = 0;
+        free(rules->extra_names);
         rules->extra_names = NULL;
+        free(rules->extra);
         rules->extra = NULL;
         return NULL;
     }
