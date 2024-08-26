@@ -64,7 +64,7 @@ XkmInsureSize(XPointer oldPtr, int oldCount, int *newCountRtrn, int elemSize)
         oldPtr = (XPointer) _XkbCalloc(newCount, elemSize);
     }
     else if (oldCount < newCount) {
-        oldPtr = (XPointer) _XkbRealloc(oldPtr, newCount * elemSize);
+        oldPtr = (XPointer) _XkbReallocF(oldPtr, newCount * elemSize);
         if (oldPtr != NULL) {
             char *tmp = (char *) oldPtr;
 
