@@ -326,9 +326,9 @@ XkbCFAddModByName(XkbConfigRtrnPtr rtrn, int what, char *name, Bool merge,
 {
     if (rtrn->num_unbound_mods >= rtrn->sz_unbound_mods) {
         rtrn->sz_unbound_mods += 5;
-        rtrn->unbound_mods = _XkbTypedRealloc(rtrn->unbound_mods,
-                                              rtrn->sz_unbound_mods,
-                                              XkbConfigUnboundModRec);
+        rtrn->unbound_mods = _XkbTypedReallocF(rtrn->unbound_mods,
+                                               rtrn->sz_unbound_mods,
+                                               XkbConfigUnboundModRec);
         if (rtrn->unbound_mods == NULL) {
             rtrn->error = XkbCF_BadAlloc;
             return NULL;

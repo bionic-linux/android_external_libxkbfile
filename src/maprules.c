@@ -527,7 +527,7 @@ _Concat(char *str1, char *str2)
     if ((!str1) || (!str2))
         return str1;
     len = strlen(str1) + strlen(str2) + 1;
-    str1 = _XkbTypedRealloc(str1, len, char);
+    str1 = _XkbTypedReallocF(str1, len, char);
     if (str1)
         strcat(str1, str2);
     return str1;
@@ -954,8 +954,8 @@ XkbRF_AddRule(XkbRF_RulesPtr rules)
     }
     else if (rules->num_rules >= rules->sz_rules) {
         rules->sz_rules *= 2;
-        rules->rules = _XkbTypedRealloc(rules->rules, rules->sz_rules,
-                                        XkbRF_RuleRec);
+        rules->rules = _XkbTypedReallocF(rules->rules, rules->sz_rules,
+                                         XkbRF_RuleRec);
     }
     if (!rules->rules) {
         rules->sz_rules = rules->num_rules = 0;
@@ -978,8 +978,8 @@ XkbRF_AddGroup(XkbRF_RulesPtr rules)
     }
     else if (rules->num_groups >= rules->sz_groups) {
         rules->sz_groups *= 2;
-        rules->groups = _XkbTypedRealloc(rules->groups, rules->sz_groups,
-                                         XkbRF_GroupRec);
+        rules->groups = _XkbTypedReallocF(rules->groups, rules->sz_groups,
+                                          XkbRF_GroupRec);
     }
     if (!rules->groups) {
         rules->sz_groups = rules->num_groups = 0;
@@ -1076,7 +1076,7 @@ XkbRF_AddVarDesc(XkbRF_DescribeVarsPtr vars)
     else if (vars->num_desc >= vars->sz_desc) {
         vars->sz_desc *= 2;
         vars->desc =
-            _XkbTypedRealloc(vars->desc, vars->sz_desc, XkbRF_VarDescRec);
+            _XkbTypedReallocF(vars->desc, vars->sz_desc, XkbRF_VarDescRec);
     }
     if (!vars->desc) {
         vars->sz_desc = vars->num_desc = 0;
@@ -1113,10 +1113,10 @@ XkbRF_AddVarToDescribe(XkbRF_RulesPtr rules, char *name)
     else if (rules->num_extra >= rules->sz_extra) {
         rules->sz_extra *= 2;
         rules->extra_names =
-            _XkbTypedRealloc(rules->extra_names, rules->sz_extra, char *);
+            _XkbTypedReallocF(rules->extra_names, rules->sz_extra, char *);
         rules->extra =
-            _XkbTypedRealloc(rules->extra, rules->sz_extra,
-                             XkbRF_DescribeVarsRec);
+            _XkbTypedReallocF(rules->extra, rules->sz_extra,
+                              XkbRF_DescribeVarsRec);
     }
     if ((!rules->extra_names) || (!rules->extra)) {
         PR_DEBUG("allocation error in extra parts\n");
