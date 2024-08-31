@@ -21,6 +21,7 @@ deps = [
 ]
 
 includes = include_directories(
+    '..',
     '../include/',
     '../include/X11/extensions/'
 )

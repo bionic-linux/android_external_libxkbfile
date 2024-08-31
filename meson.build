@@ -7,12 +7,14 @@ project('libxkbfile', 'c',
 cc = meson.get_compiler('c')
 
 cc_conf = configuration_data({
+    'HAVE_REALLOCF': cc.has_function('reallocf') ? '1' : false,
     'HAVE_STRNDUP': cc.has_function('strndup') and
                     cc.has_header_symbol('string.h', 'strndup') ? '1' : false,
     'HAVE_UNLOCKED_STDIO': cc.has_function('getc_unlocked') ? '1' : false
 })
 configure_file(output: 'config.h',
                configuration: cc_conf)
+add_project_arguments('-DHAVE_CONFIG_H', language : ['c'])
 
 pc_conf = configuration_data({
     'prefix': get_option('prefix'),
