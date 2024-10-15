@@ -45,6 +45,12 @@ XORG_DEFAULT_OPTIONS
 AC_CHECK_FUNCS([reallocf strndup])
 AC_CHECK_FUNC(getc_unlocked, AC_DEFINE([HAVE_UNLOCKED_STDIO], 1,
 				       ['Unlocked stdio']), [])
+# On Windows, we need to call _stricmp instead of strcasecmp
+AC_CHECK_FUNC([strcasecmp], [],
+    AC_CHECK_FUNC([_stricmp],
+        AC_DEFINE([strcasecmp], [_stricmp],
+            [Replacement for strcasecmp, if necessary]),
+        AC_MSG_ERROR([No replacement found for strcasecmp])))
 
 # Obtain compiler/linker options for dependencies
 PKG_CHECK_MODULES(XKBFILE, [x11 kbproto xproto >= 7.0.9])

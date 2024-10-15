@@ -12,6 +12,14 @@ cc_conf = configuration_data({
                     cc.has_header_symbol('string.h', 'strndup') ? '1' : false,
     'HAVE_UNLOCKED_STDIO': cc.has_function('getc_unlocked') ? '1' : false
 })
+# strcasecmp is spelled '_stricmp' on Windows
+if not cc.has_function('strcasecmp')
+    if cc.has_function('_stricmp')
+        cc_conf.set('strcasecmp', '_stricmp', description: 'Replacement for strcasecmp, if necessary')
+    else
+        error('strcasecmp (or _stricmp) is mandatory')
+    endif
+endif
 configure_file(output: 'config.h',
                configuration: cc_conf)
 add_project_arguments('-DHAVE_CONFIG_H', language : ['c'])
